@@ -12,7 +12,18 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
-
+# usersテーブル  
+name
+email
+# itemsテーブル  
+image
+text
+user_id
+# ordersテーブル  
+price
+address
+user_id
+item_id
 * Database initialization
 
 * How to run the test suite
