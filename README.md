@@ -12,18 +12,43 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
-# usersテーブル  
-name
-email
-# itemsテーブル  
-image
-text
-user_id
-# ordersテーブル  
-price
-address
-user_id
-item_id
+## usersテーブル  
+  
+| Column   | Type   | Options     |  
+| -------- | ------ | ----------- |  
+| name     | string | null: false |  
+| email    | string | null: false |  
+| password | string | null: false |  
+  
+### Association  
+- has_many :item  
+- has_many :order  
+
+## itemsテーブル  
+  
+| Column  | Type       | Options           |  
+| ------- | ---------- | ----------------- |  
+| image   | mediumblob |                   |  
+| text    | text       | null: false       |  
+| user_id | references | foreign_key: true |  
+  
+### Association  
+- belongs_to :user  
+- has_one :order  
+
+## ordersテーブル  
+  
+| Column  | Type       | Options           |  
+| ------- | ---------- | ----------------- |  
+| price   | integer    | null: false       |  
+| address | text       | null: false       |  
+| user_id | references | foreign_key: true |  
+| item_id | references | foreign_key: true |  
+  
+### Association  
+- belongs_to :user  
+- belongs_to :item  
+
 * Database initialization
 
 * How to run the test suite
