@@ -11,8 +11,6 @@ class User < ApplicationRecord
     validates :last_name_reading, format: { with: /\A[ァ-ヶーー]+\z/, message: 'is invalid. Input full-width katakana characters.' }
     validates :nickname
     validates :birthday
-    # validates :email, uniqueness: true, inclusion: { in: ["@"] }
     validates :password, format: { with: /\A[a-zA-Z0-9]+\z/, message: 'is invalid. Input half-width alphanumeric characters.' }, length: { minimum: 6 }, confirmation: true
-    # validates :password_confirmation, format: { with: /\A[a-zA-Z0-9]+\z/, message: "is invalid. Input half-width alphanumeric characters."}, length: { minimum: 6 }
   end
 end
