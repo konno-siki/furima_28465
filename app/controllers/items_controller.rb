@@ -7,6 +7,12 @@ class ItemsController < ApplicationController
   def new
   end
 
+  def price
+    Item.update(price: params[:id])
+    item = Item.find(params[:id])
+    render json: { price: item }
+  end
+
   private
 
   def move_to_new
