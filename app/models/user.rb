@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
+  has_many :items
+  
   full_size_japanese = /\A[ぁ-んァ-ンー-龥]/
   full_width_kana = /\A[ァ-ヶーー]+\z/
   with_options presence: true do
