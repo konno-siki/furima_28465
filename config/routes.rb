@@ -3,5 +3,4 @@ Rails.application.routes.draw do
   resources :items
   resources :orders, only: :index
   devise_for :users
-  get 'items/:id', to: 'items#price'
 end
