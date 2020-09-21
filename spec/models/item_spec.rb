@@ -44,8 +44,18 @@ RSpec.describe '商品出品機能', type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Category Select')
     end
+    it 'category_idが1だと出品できない' do
+      @item.category_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Category Select')
+    end
     it 'status_idが空だと出品できない' do
       @item.status_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Status Select')
+    end
+    it 'status_idが1だと出品できない' do
+      @item.status_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Status Select')
     end
@@ -54,13 +64,28 @@ RSpec.describe '商品出品機能', type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Fee Select')
     end
+    it 'fee_idが1だと出品できない' do
+      @item.fee_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Fee Select')
+    end
     it 'prefecture_idが空だと出品できない' do
       @item.prefecture_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include('Prefecture Select')
     end
+    it 'prefecture_idが1だと出品できない' do
+      @item.prefecture_id = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Prefecture Select')
+    end
     it 'delivery_idが空だと出品できない' do
       @item.delivery_id = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Delivery Select')
+    end
+    it 'delivery_idが1だと出品できない' do
+      @item.delivery_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Delivery Select')
     end
