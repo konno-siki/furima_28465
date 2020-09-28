@@ -55,5 +55,4 @@ class ItemsController < ApplicationController
   def item_find
     @item = Item.find_by(id: params[:id])
   end
-
 end
