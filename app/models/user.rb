@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_many :orders
 
   full_size_japanese = /\A[ぁ-んァ-ンー-龥]/
   full_width_kana = /\A[ァ-ヶーー]+\z/
