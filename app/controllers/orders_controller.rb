@@ -43,7 +43,6 @@ class OrdersController < ApplicationController
   end
 
   def forbid_items_user
-    @item = Item.find_by(id: params[:item_id])
     redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
   end
 

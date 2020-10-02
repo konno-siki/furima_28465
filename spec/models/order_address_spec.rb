@@ -36,6 +36,11 @@ RSpec.describe '商品購入機能', type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include('Prefecture Select')
     end
+    it 'prefecture_idのidが1だと購入できない' do
+      @order_address.prefecture_id = 1
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include('Prefecture Select')
+    end
     it 'cityが空だと購入できない' do
       @order_address.city = nil
       @order_address.valid?
