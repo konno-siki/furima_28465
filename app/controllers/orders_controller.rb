@@ -26,11 +26,11 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY'] # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price, # 商品の値段
       card: order_params[:token], # カードトークン
-      currency:'jpy' # 通貨の種類（日本円）
+      currency: 'jpy' # 通貨の種類（日本円）
     )
   end
 
@@ -39,22 +39,16 @@ class OrdersController < ApplicationController
   end
 
   def move_to_signin
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
   def forbid_items_user
     @item = Item.find_by(id: params[:item_id])
-    if user_signed_in? && current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
   end
 
   def purchased_items_page
     @order = Order.find_by(item_id: params[:item_id])
-    if @order != nil
-      redirect_to root_path
-    end
+    redirect_to root_path unless @order.nil?
   end
 end
