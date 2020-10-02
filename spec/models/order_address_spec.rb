@@ -56,13 +56,10 @@ RSpec.describe '商品購入機能', type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Tel can't be blank")
     end
-    it 'telがハイフン不要の10桁か11桁の数値でないと購入できない' do
-      @order_address.tel = 123_456_789
+    it 'telが11桁以下のハイフンが入っていない数字でないと購入できない' do
+      @order_address.tel = '123-456-789'
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include('Tel Enter in 10 or 11 digits without hyphens')
-      @order_address.tel = 123 - 456 - 789
-      @order_address.valid?
-      expect(@order_address.errors.full_messages).to include('Tel Enter in 10 or 11 digits without hyphens')
+      expect(@order_address.errors.full_messages).to include('Tel Numbers of 11 digits or less without hyphens')
     end
   end
 end

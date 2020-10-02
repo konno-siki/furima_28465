@@ -7,7 +7,7 @@ class OrderAddress
     validates :prefecture_id, numericality: { other_than: 1, message: 'Select' }
     validates :city
     validates :house_number
-    validates :tel, format: { with: /\A\d{10,11}\z/, message: 'Enter in 10 or 11 digits without hyphens' }
+    validates :tel, numericality: { with: /\A(?=.*?[0-9]{1,11})+\z/, message: 'Numbers of 11 digits or less without hyphens' }
   end
 
   validates :token, presence: true
